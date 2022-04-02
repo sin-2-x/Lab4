@@ -1,0 +1,16 @@
+C:\Users\sin2x\source\repos\Lab4\Lab4\bin\Debug\Lab4.exe.config
+C:\Users\sin2x\source\repos\Lab4\Lab4\bin\Debug\Lab4.exe
+C:\Users\sin2x\source\repos\Lab4\Lab4\bin\Debug\Lab4.pdb
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4.csproj.AssemblyReference.cache
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\App.g.cs
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4_MarkupCompile.cache
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4_MarkupCompile.lref
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4.g.resources
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4.Properties.Resources.resources
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4.csproj.GenerateResource.cache
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4.csproj.CoreCompileInputs.cache
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4.exe
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\Lab4.pdb
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\View\DebtorsView.g.cs
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\View\DebtorsView.baml
+C:\Users\sin2x\source\repos\Lab4\Lab4\obj\Debug\GeneratedInternalTypeHelper.g.cs
