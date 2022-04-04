@@ -24,7 +24,7 @@ namespace Lab4 {
     private string description;*/
 
     public CurrentDebtor(Debtor CDebtor) {
-      DataContext = CDebtor;//= new CurretDebtorViewModel(CDebtor);
+            DataContext = CDebtor;//new CurretDebtorViewModel(CDebtor);
       InitializeComponent();
 
      
