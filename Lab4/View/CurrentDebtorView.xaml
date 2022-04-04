@@ -1,0 +1,20 @@
+﻿<Window x:Class="Lab4.CurrentDebtor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d"
+        Title="MaiWindow" Height="450" Width="800"
+        >
+
+  <Grid>
+    <TextBox HorizontalAlignment="Left" Height="192" Margin="64,189,0,0" TextWrapping="Wrap" Text="{Binding Mode=OneWay}" VerticalAlignment="Top" Width="683" AutomationProperties.Name="description"/>
+	<TextBox HorizontalAlignment="Left" Height="33" Margin="170,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="356" AutomationProperties.Name="name"/>
+	<TextBox HorizontalAlignment="Left" Height="33" Margin="551,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="196" AutomationProperties.Name="sum"/>
+	<Button Content="Button" HorizontalAlignment="Left" Margin="672,114,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.042,-0.453"/>
+	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="40,33,0,0" VerticalAlignment="Top" Width="100">
+
+	</Border>
+
+  </Grid>
+</Window>
