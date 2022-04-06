@@ -6,18 +6,19 @@
         xmlns:local="clr-namespace:Lab4" xmlns:veiwmodel="clr-namespace:Lab4.VeiwModel" d:DataContext="{d:DesignInstance Type=veiwmodel:DebtorsViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-  <Grid>
-	<ListBox Margin="10" x:Name="ListBoxDebtors"  ItemsSource="{Binding Path=Debtors}" >
-	  <ListBox.ItemTemplate>
-		<DataTemplate>
-		  <DockPanel Margin="0" Width="{Binding ElementName=ListBoxDebtors, Path=ActualWidth}" Background="Azure" HorizontalAlignment="Stretch">
-			<Image Source="{Binding Photo}" Height="80"/>
-			<TextBlock Text="{Binding Name}" FontSize="16" />
-			<Button Content="Изменить" Height="40" Width="75" HorizontalAlignment="Right" Click="ShowCurrentDebtorWindow"/>
-			<Button Content="Удалить" Height="40" Width="75"  HorizontalAlignment="Right"/>
-		  </DockPanel>
-		</DataTemplate>
-	  </ListBox.ItemTemplate>
-	</ListBox>
-  </Grid>
+    <Grid>
+        <ListBox Margin="10,10,10.333,49.667" x:Name="listBoxDebtors"  ItemsSource="{Binding Path=Debtors}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Margin="0" Width="{Binding ElementName=ListBoxDebtors, Path=ActualWidth}" Background="Azure" HorizontalAlignment="Stretch">
+                        <Image Source="{Binding Photo}" Height="80"/>
+                        <TextBlock Text="{Binding Name}" FontSize="16" />
+                        <Button Content="Изменить" Height="40" Width="75" HorizontalAlignment="Right" Click="ShowCurrentDebtorWindow"/>
+                        <Button Content="Удалить" Height="40" Width="75"  HorizontalAlignment="Right"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="addBtn" Content="Добавить" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="773" Height="35" Click="AddBtnClick"/>
+    </Grid>
 </Window>

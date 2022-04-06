@@ -14,19 +14,35 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lab4 {
-  /// <summary>
-  /// Логика взаимодействия для MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window {
-    public MainWindow() {
-      InitializeComponent();
-      DataContext = new DebtorsViewModel();
-    }
+namespace Lab4
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        DebtorsViewModel vm;
 
-    private void ShowCurrentDebtorWindow(object sender, RoutedEventArgs e) {
-      Console.WriteLine(((DockPanel)((Button)sender).Parent).DataContext.ToString()) ;
-      new CurrentDebtor((Debtor)((DockPanel)((Button)sender).Parent).DataContext).Show();
+        public MainWindow()
+        {
+            InitializeComponent();
+            vm = new DebtorsViewModel();
+            DataContext = vm;
+        }
+
+        private void ShowCurrentDebtorWindow(object sender, RoutedEventArgs e)
+        {
+            //Console.WriteLine(((DockPanel)((Button)sender).Parent).DataContext.ToString()) ;
+            new CurrentDebtor((Debtor)((DockPanel)((Button)sender).Parent).DataContext).Show();
+        }
+
+        private void AddBtnClick(object sender, RoutedEventArgs e)
+        {
+            var newDebtor = new Debtor();
+            new CurrentDebtor(newDebtor).ShowDialog();
+            //listBoxDebtors.Items.Add(newDebtor);
+            vm.Debtors.Add(newDebtor);
+            //
+        }
     }
-  }
 }

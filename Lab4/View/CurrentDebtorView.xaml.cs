@@ -14,33 +14,46 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lab4 {
-  /// <summary>
-  /// Логика взаимодействия для MainWindow.xaml
-  /// </summary>
-  public partial class CurrentDebtor : Window {
+namespace Lab4
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class CurrentDebtor : Window
+    {
 
-    Debtor ChangeDebtor;
-    public CurrentDebtor(Debtor CDebtor) {
+        Debtor ChangeDebtor;
+        public CurrentDebtor()
+        {
 
-      ChangeDebtor = CDebtor;
-      DataContext = CDebtor;//new CurretDebtorViewModel(CDebtor);
-      InitializeComponent();
+            
+            DataContext = ChangeDebtor;//new CurretDebtorViewModel(CDebtor);
+            InitializeComponent();
 
+        }
+        public CurrentDebtor(Debtor CDebtor)
+        {
+
+            ChangeDebtor = CDebtor;
+            DataContext = CDebtor;//new CurretDebtorViewModel(CDebtor);
+            InitializeComponent();
+
+        }
+
+        private void OkButtonClick(object sender, RoutedEventArgs e)
+        {
+            int newSum;
+            int.TryParse(sumTB.Text, out newSum);
+            ChangeDebtor.Sum = newSum;
+
+            ChangeDebtor.Name = nameTB.Text;
+
+            //Console.WriteLine(photoImg.Source.ToString());
+            if(photoImg.Source!=null)
+            ChangeDebtor.Photo = photoImg.Source.ToString().Substring(photoImg.Source.ToString().LastIndexOf('/') + 1);
+            ChangeDebtor.Description = descriptionTB.Text;
+            Close();
+
+        }
     }
-
-    private void OkButtonClick(object sender, RoutedEventArgs e) {
-      int newSum;
-      int.TryParse(sumTB.Text, out newSum);
-      ChangeDebtor.Sum = newSum;
-
-      ChangeDebtor.Name = nameTB.Text;
-
-      //Console.WriteLine(photoImg.Source.ToString());
-      ChangeDebtor.Photo = photoImg.Source.ToString().Substring(photoImg.Source.ToString().LastIndexOf('/')-1);
-      ChangeDebtor.Description = descriptionTB.Text;
-      Close();
-
-    }
-  }
 }

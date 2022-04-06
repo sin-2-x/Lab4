@@ -33,8 +33,8 @@ namespace Lab4 {
     public int Id { get { return id; } set { id = value; OnPropertyChanged("Id"); } }
     public string Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
     public int Sum { get { return sum; } set { sum = value; OnPropertyChanged("Sum"); } }
-    public string Photo { get { return photo; } set { photo = Directory.GetCurrentDirectory() + value; OnPropertyChanged("Photo"); } }
-    public string Description { get { return description; } set { description = Directory.GetCurrentDirectory() + value; OnPropertyChanged("Photo"); } }
+    public string Photo { get { return photo; } set { photo = Directory.GetCurrentDirectory()+"\\pics\\" + value; OnPropertyChanged("Photo"); } }
+    public string Description { get { return description; } set { description = value; OnPropertyChanged("Description"); } }
 
 
 
