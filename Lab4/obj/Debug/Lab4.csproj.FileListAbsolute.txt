@@ -40,4 +40,4 @@ C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\Lab4.csproj.CopyComplete
 C:\Users\sin2x\Desktop\Lab4\Lab4\bin\Debug\Model\debtors.db
 C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\CurrentDebtorView.g.cs
 C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\CurrentDebtorView.baml
-C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\Lab4.csprojAssemblyReference.cache
+C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\Lab4.csproj.AssemblyReference.cache

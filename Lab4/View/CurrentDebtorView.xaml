@@ -8,13 +8,13 @@
         >
 
   <Grid>
-    <TextBox HorizontalAlignment="Left" Height="192" Margin="64,189,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="683" AutomationProperties.Name="description"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="170,33,0,0" TextWrapping="Wrap" Text="{Binding Path=Name}" VerticalAlignment="Top" Width="356" AutomationProperties.Name="name"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="551,33,0,0" TextWrapping="Wrap" Text="{Binding Path=Sum}" VerticalAlignment="Top" Width="196" AutomationProperties.Name="sum"/>
-	<Button Content="Button" HorizontalAlignment="Left" Margin="672,114,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.042,-0.453"/>
-	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="40,33,0,0" VerticalAlignment="Top" Width="100">
-            <Image Source="{Binding Photo}"/>
-	</Border>
+    <TextBox x:Name="descriptionTB" HorizontalAlignment="Left" Height="192" Margin="64,189,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="683" AutomationProperties.Name="description"/>
+    <TextBox x:Name="nameTB" HorizontalAlignment="Left" Height="33" Margin="170,33,0,0" TextWrapping="Wrap" Text="{Binding Path=Name,Mode=OneWay}" VerticalAlignment="Top" Width="356"/>
+    <TextBox x:Name="sumTB" HorizontalAlignment="Left" Height="33" Margin="551,33,0,0" TextWrapping="Wrap" Text="{Binding Path=Sum, Mode=OneWay}" VerticalAlignment="Top" Width="196" AutomationProperties.Name="sum"/>
+    <Button Content="Применить" HorizontalAlignment="Left" Margin="672,114,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.042,-0.453" Click="OkButtonClick"/>
+    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="40,33,0,0" VerticalAlignment="Top" Width="100">
+      <Image x:Name="photoImg" Source="{Binding Photo, Mode=OneWay}"/>
+    </Border>
 
   </Grid>
 </Window>

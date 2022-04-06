@@ -19,21 +19,28 @@ namespace Lab4 {
   /// Логика взаимодействия для MainWindow.xaml
   /// </summary>
   public partial class CurrentDebtor : Window {
-    /*private string name;
-    private string sum;
-    private string description;*/
 
+    Debtor ChangeDebtor;
     public CurrentDebtor(Debtor CDebtor) {
-            DataContext = CDebtor;//new CurretDebtorViewModel(CDebtor);
+
+      ChangeDebtor = CDebtor;
+      DataContext = CDebtor;//new CurretDebtorViewModel(CDebtor);
       InitializeComponent();
 
-     
+    }
 
-      
+    private void OkButtonClick(object sender, RoutedEventArgs e) {
+      int newSum;
+      int.TryParse(sumTB.Text, out newSum);
+      ChangeDebtor.Sum = newSum;
 
-      /*name = CurrentDebtor.Name;
-      sum = CurrentDebtor.Sum.ToString();
-      description = "Описание";*/
+      ChangeDebtor.Name = nameTB.Text;
+
+      //Console.WriteLine(photoImg.Source.ToString());
+      ChangeDebtor.Photo = photoImg.Source.ToString().Substring(photoImg.Source.ToString().LastIndexOf('/')-1);
+      ChangeDebtor.Description = descriptionTB.Text;
+      Close();
+
     }
   }
 }
