@@ -10,7 +10,7 @@
         <ListBox Margin="10,10,10.333,49.667" x:Name="listBoxDebtors"  ItemsSource="{Binding Path=Debtors}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel Margin="0" Width="{Binding ElementName=ListBoxDebtors, Path=ActualWidth}" Background="Azure" HorizontalAlignment="Stretch">
+                    <DockPanel Background="Azure" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                         <Image Source="{Binding Photo}" Height="80"/>
                         <TextBlock Text="{Binding Name}" FontSize="16" />
                         <Button Content="Изменить" Height="40" Width="75" HorizontalAlignment="Right" Click="ShowCurrentDebtorWindow"/>
@@ -19,6 +19,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="addBtn" Content="Добавить" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="773" Height="35" Click="AddBtnClick"/>
+        <Button x:Name="addBtn" Content="Добавить" Margin="10,0,10,6.667" VerticalAlignment="Bottom" Height="35" Click="AddBtnClick"/>
     </Grid>
 </Window>

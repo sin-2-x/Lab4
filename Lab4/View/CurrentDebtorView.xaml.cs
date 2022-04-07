@@ -1,18 +1,12 @@
-﻿using Lab4.VeiwModel;
+﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace Lab4
 {
@@ -25,9 +19,7 @@ namespace Lab4
         Debtor ChangeDebtor;
         public CurrentDebtor()
         {
-
-            
-            DataContext = ChangeDebtor;//new CurretDebtorViewModel(CDebtor);
+            DataContext = ChangeDebtor;
             InitializeComponent();
 
         }
@@ -35,24 +27,55 @@ namespace Lab4
         {
 
             ChangeDebtor = CDebtor;
-            DataContext = CDebtor;//new CurretDebtorViewModel(CDebtor);
+            DataContext = CDebtor;
             InitializeComponent();
 
         }
 
         private void OkButtonClick(object sender, RoutedEventArgs e)
         {
-            int newSum;
-            int.TryParse(sumTB.Text, out newSum);
+            int.TryParse(sumTB.Text, out int newSum);
             ChangeDebtor.Sum = newSum;
 
             ChangeDebtor.Name = nameTB.Text;
 
-            //Console.WriteLine(photoImg.Source.ToString());
-            if(photoImg.Source!=null)
-            ChangeDebtor.Photo = photoImg.Source.ToString().Substring(photoImg.Source.ToString().LastIndexOf('/') + 1);
+            if (photoImg.Source == null)
+                ChangeDebtor.Photo = "0.png";
+            else
+            {
+                string newPhotopath = photoImg.Source.ToString();
+                newPhotopath = newPhotopath.Substring("file:///".Length);
+                string newPhotoFolder = newPhotopath.Remove(newPhotopath.LastIndexOf('/') + 1);
+                string newPhotoName = newPhotopath.Substring(newPhotopath.LastIndexOf('/') + 1);
+                string oldPhotoName = ChangeDebtor.Photo.Substring(ChangeDebtor.Photo.LastIndexOf('\\') + 1);
+                File.Copy(newPhotopath, Directory.GetCurrentDirectory() + "\\pics\\" + newPhotoName, true);
+                ChangeDebtor.Photo = newPhotoName;
+            }
             ChangeDebtor.Description = descriptionTB.Text;
             Close();
+
+        }
+
+        private void imgMouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 0.7;
+        }
+
+        private void imgMouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 1;
+        }
+
+        private void imgMouseClick(object sender, MouseButtonEventArgs e)
+        {
+
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Select a picture";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+                photoImg.Source = new BitmapImage(new Uri(op.FileName));
 
         }
     }

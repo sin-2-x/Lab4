@@ -1,6 +1,7 @@
 ﻿using Lab4.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -10,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace Lab4.VeiwModel
 {
-    public class DebtorsViewModel : INotifyPropertyChanged, INotifyCollectionChanged
+    public class DebtorsViewModel //: /*INotifyPropertyChanged,*/ //INotifyCollectionChanged
     {
         // Implements INotifyPropertyChanged interface to support bindings
 
-        private List<Debtor> debtors;
+        private ObservableCollection<Debtor> debtors;
         DebtorsModel db;
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-        public List<Debtor> Debtors
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public ObservableCollection<Debtor> Debtors
         {
             get
             {
@@ -27,19 +28,19 @@ namespace Lab4.VeiwModel
             set
             {
                 //helloString = value;
-                OnPropertyChanged();
+                //OnPropertyChanged();
             }
         }
 
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+/*        protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventHandler(name));
+        }*/
 
         public DebtorsViewModel()
         {
             db = new DebtorsModel();
-            debtors = db.GetData();
+            debtors =new ObservableCollection<Debtor>( db.GetData());
         }
     }
 }
