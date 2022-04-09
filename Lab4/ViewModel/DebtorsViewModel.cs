@@ -9,38 +9,62 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab4.VeiwModel
-{
-    public class DebtorsViewModel //: /*INotifyPropertyChanged,*/ //INotifyCollectionChanged
-    {
-        // Implements INotifyPropertyChanged interface to support bindings
+namespace Lab4.VeiwModel {
+  public class DebtorsViewModel : INotifyPropertyChanged//, INotifyCollectionChanged
+  {
+    // Implements INotifyPropertyChanged interface to support bindings
 
-        private ObservableCollection<Debtor> debtors;
-        DebtorsModel db;
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //public event NotifyCollectionChangedEventHandler CollectionChanged;
-        public ObservableCollection<Debtor> Debtors
-        {
-            get
-            {
-                return debtors;
-            }
-            set
-            {
-                //helloString = value;
-                //OnPropertyChanged();
-            }
-        }
+    private ObservableCollection<Debtor> debtors;
+    DebtorsModel db;
+    public event PropertyChangedEventHandler PropertyChanged;
+   // public event NotifyCollectionChangedEventHandler CollectionChanged;
 
-/*        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventHandler(name));
-        }*/
-
-        public DebtorsViewModel()
-        {
-            db = new DebtorsModel();
-            debtors =new ObservableCollection<Debtor>( db.GetData());
-        }
+    
+    public ObservableCollection<Debtor> Debtors {
+      get {
+        return debtors;
+      }
+      set {
+        //helloString = value;
+        //OnPropertyChanged();
+      }
     }
+
+   /* protected void OnPropertyChanged([CallerMemberName] string name = null) {
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }*/
+
+    void DebtorsCollectionChanged(object sender,NotifyCollectionChangedEventArgs e) {
+      
+      if (e.Action == NotifyCollectionChangedAction.Add) {
+        Console.WriteLine("добавление");
+        var a = (Debtor)((object[])e.NewItems.SyncRoot).ElementAt(0);
+        
+        db.Add(a);
+      }
+      else if (e.Action == NotifyCollectionChangedAction.Remove) {
+        Console.WriteLine("удаление");
+        
+      }
+      else if(e.Action==NotifyCollectionChangedAction.Replace){
+        Console.WriteLine("изменен");
+      }
+      
+    }
+
+    public DebtorsViewModel() {
+
+      db = new DebtorsModel();
+      debtors = new ObservableCollection<Debtor>(db.GetData());
+      foreach (var debtor  in debtors) {
+        debtor.PropertyChanged += OnPropertyChanged;
+      }
+      debtors.CollectionChanged += DebtorsCollectionChanged;
+      
+    }
+
+    private void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+      Console.WriteLine("Изменен");
+    }
+  }
 }

@@ -15,6 +15,10 @@ namespace Lab4.VeiwModel {
 
     public event PropertyChangedEventHandler PropertyChanged;
 
+    /*public CurretDebtorViewModel(Debtor Cdebtor) {
+      currentDebtor = Cdebtor;
+      //currentDebtor = 
+    }*/
     public Debtor CurrentDebtor {
       get {
         return currentDebtor;
