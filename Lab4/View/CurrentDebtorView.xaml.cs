@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Lab4.VeiwModel;
+using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Windows;
@@ -14,34 +15,35 @@ namespace Lab4 {
   /// </summary>
   public partial class CurrentDebtor : Window {
 
-    Debtor ChangeDebtor;
+    //Debtor ChangeDebtor;
+    CurretDebtorViewModel vm;
     public CurrentDebtor(Debtor CDebtor) {
-      ChangeDebtor = CDebtor;
-      
-      DataContext = CDebtor;
+      //ChangeDebtor = CDebtor;
+      vm = new CurretDebtorViewModel(CDebtor);
+      DataContext = vm.CurrentDebtor;
       InitializeComponent();
 
     }
 
     private void OkButtonClick(object sender, RoutedEventArgs e) {
       int.TryParse(sumTB.Text, out int newSum);
-      ChangeDebtor.Sum = newSum;
 
-      ChangeDebtor.Name = nameTB.Text;
+      //vm.CurrentDebtor.Sum= newSum;
 
-      /*if (photoImg.Source == null)
-        ChangeDebtor.Photo = "0.png";
-      else {*/
+      //vm.CurrentDebtor.Name = nameTB.Text;
+
+
       string newPhotopath = photoImg.Source.ToString();
       newPhotopath = newPhotopath.Substring("file:///".Length);
-      //string newPhotoFolder = newPhotopath.Remove(newPhotopath.LastIndexOf('/') + 1);
-      string newPhotoName = newPhotopath.Substring(newPhotopath.LastIndexOf('/') + 1);
-      string oldPhotoName = ChangeDebtor.Photo.Substring(ChangeDebtor.Photo.LastIndexOf('\\') + 1);
+
+      /*string newPhotoName = newPhotopath.Substring(newPhotopath.LastIndexOf('/') + 1);
+      string oldPhotoName = vm.CurrentDebtor.Photo.Substring(vm.CurrentDebtor.Photo.LastIndexOf('\\') + 1);
       if (newPhotoName != oldPhotoName)
         File.Copy(newPhotopath, Directory.GetCurrentDirectory() + "\\pics\\" + newPhotoName, true);
-      ChangeDebtor.Photo = newPhotoName;
-      //}
-      ChangeDebtor.Description = descriptionTB.Text;
+      //vm.CurrentDebtor.Photo = newPhotoName;
+
+      //vm.CurrentDebtor.Description = descriptionTB.Text;*/
+      vm.SubmitChanges(nameTB.Text, newSum, newPhotopath, descriptionTB.Text);
       Close();
 
     }

@@ -40,7 +40,6 @@ C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\Lab4.csproj.CopyComplete
 C:\Users\sin2x\Desktop\Lab4\Lab4\bin\Debug\Model\debtors.db
 C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\CurrentDebtorView.g.cs
 C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\CurrentDebtorView.baml
-C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\Lab4.csproj.AssemblyReference.cache
 C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\Model\debtors.db
 C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\Lab4.exe.config
 C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\Lab4.exe
@@ -215,3 +214,4 @@ C:\Users\sin2x\Desktop\Lab4\Lab4\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resour
 C:\Users\sin2x\Desktop\Lab4\Lab4\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
 C:\Users\sin2x\Desktop\Lab4\Lab4\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\sin2x\Desktop\Lab4\Lab4\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\Lab4.csproj.AssemblyReference.cache

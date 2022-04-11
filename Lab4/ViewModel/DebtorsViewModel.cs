@@ -44,10 +44,11 @@ namespace Lab4.VeiwModel {
       }
       else if (e.Action == NotifyCollectionChangedAction.Remove) {
         Console.WriteLine("удаление");
-        
+        db.Delete((Debtor)((object[])e.OldItems.SyncRoot).ElementAt(0));
       }
       else if(e.Action==NotifyCollectionChangedAction.Replace){
         Console.WriteLine("изменен");
+        //db.Edit();
       }
       
     }
@@ -56,15 +57,15 @@ namespace Lab4.VeiwModel {
 
       db = new DebtorsModel();
       debtors = new ObservableCollection<Debtor>(db.GetData());
-      foreach (var debtor  in debtors) {
+      /*foreach (var debtor  in debtors) {
         debtor.PropertyChanged += OnPropertyChanged;
-      }
+      }*/
       debtors.CollectionChanged += DebtorsCollectionChanged;
       
     }
 
-    private void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
-      Console.WriteLine("Изменен");
-    }
+/*    private void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+     // Console.WriteLine("Изменен");
+    }*/
   }
 }

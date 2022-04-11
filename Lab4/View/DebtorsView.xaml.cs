@@ -29,13 +29,9 @@ namespace Lab4 {
     }
 
     private void ShowCurrentDebtorWindow(object sender, RoutedEventArgs e) {
-      //Console.WriteLine(((DockPanel)((Button)sender).Parent).DataContext.ToString()) ;
       var current = (Debtor)((Grid)((Button)sender).Parent).DataContext;
-      var grid = ((Grid)((Button)sender).Parent);
       new CurrentDebtor(current).ShowDialog();
-      UpdateSourceImg(current);
-      //vm.Debtors.ElementAt(((Debtor)((Grid)((Button)sender).Parent).DataContext).id)=
-      //DataContext=new DebtorsViewModel();
+      //UpdateSourceImg(current);
       
     }
 
@@ -48,18 +44,18 @@ namespace Lab4 {
     }
 
     private void RemoveBtnClick(object sender, RoutedEventArgs e) {
-      vm.Debtors.Remove((Debtor)((DockPanel)((Button)sender).Parent).DataContext);
+      vm.Debtors.Remove((Debtor)((Grid)((Button)sender).Parent).DataContext);
     }
-    private void UpdateSourceImg(Debtor current) {
+/*    private void UpdateSourceImg(Debtor current) {
      // current.
-    }
+    }*/
 
-    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+/*    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
 
-    }
+    }*/
 
-    private void Image_SourceUpdated(object sender, DataTransferEventArgs e) {
+/*    private void Image_SourceUpdated(object sender, DataTransferEventArgs e) {
       Console.WriteLine("ff");
-    }
+    }*/
   }
 }

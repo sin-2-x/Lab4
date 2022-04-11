@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,11 +15,9 @@ namespace Lab4.VeiwModel {
     private Debtor currentDebtor;
 
     public event PropertyChangedEventHandler PropertyChanged;
-
-    /*public CurretDebtorViewModel(Debtor Cdebtor) {
-      currentDebtor = Cdebtor;
-      //currentDebtor = 
-    }*/
+    public CurretDebtorViewModel(Debtor currentDebtor) {
+      this.CurrentDebtor = currentDebtor;
+    }
     public Debtor CurrentDebtor {
       get {
         return currentDebtor;
@@ -29,12 +28,19 @@ namespace Lab4.VeiwModel {
       }
     }
 
+
     protected void OnPropertyChanged([CallerMemberName] string name = null) {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 
-    public CurretDebtorViewModel(Debtor currentDebtor) {
-      this.CurrentDebtor = currentDebtor;
+    public void SubmitChanges(string name, int sum, string photopath, string description) {
+      CurrentDebtor.Name = name;
+      CurrentDebtor.Sum = sum;
+      CurrentDebtor.Description = description;
+
+      string newPhotoName = "Debtor" + CurrentDebtor.id.ToString()+photopath.Substring(photopath.LastIndexOf('.'));
+      File.Copy(photopath, Directory.GetCurrentDirectory() + "\\pics\\" + newPhotoName, true);
+      CurrentDebtor.Photo = newPhotoName;
     }
   }
 }
