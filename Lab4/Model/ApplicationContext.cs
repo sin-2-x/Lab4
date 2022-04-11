@@ -17,12 +17,7 @@ namespace Lab4.Model {
   public class ApplicationContext : DbContext {
     public ApplicationContext() : base("DefaultConnection") {
     }
-    /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-
-      optionsBuilder.UseSQLite(@"DataSource=mydatabase.db;");
-    }*/
-    public DbSet<Debtor> Debtors { get; set; }
-
+    public DbSet<Debtor> DebtorsDatabase { get; set; }
 
   }
 

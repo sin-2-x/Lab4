@@ -14,48 +14,55 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lab4 {
-  /// <summary>
-  /// Логика взаимодействия для MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window {
-    DebtorsViewModel vm;
+namespace Lab4
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        DebtorsViewModel vm;
 
-    public MainWindow() {
-      InitializeComponent();
-      vm = new DebtorsViewModel();
-      DataContext = vm;
-      
+        public MainWindow()
+        {
+            InitializeComponent();
+            vm = new DebtorsViewModel();
+            DataContext = vm;
+
+        }
+
+        private void ShowCurrentDebtorWindow(object sender, RoutedEventArgs e)
+        {
+            var current = (Debtor)((Grid)((Button)sender).Parent).DataContext;
+            new CurrentDebtor(current).ShowDialog();
+            //vm.Debtors.ElementAt((vm.Debtors.IndexOf(current)));
+
+        }
+
+        private void AddBtnClick(object sender, RoutedEventArgs e)
+        {
+            Debtor newDebtor = new Debtor() { Photo = "0.png" };
+            new CurrentDebtor(newDebtor).ShowDialog();
+            if (newDebtor.Name != "" && newDebtor.Sum > 0)
+            {
+                vm.Debtors.Add(newDebtor);
+            }
+        }
+
+        private void RemoveBtnClick(object sender, RoutedEventArgs e)
+        {
+            vm.Debtors.Remove((Debtor)((Grid)((Button)sender).Parent).DataContext);
+        }
+        /*    private void UpdateSourceImg(Debtor current) {
+             // current.
+            }*/
+
+        /*    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+            }*/
+
+        /*    private void Image_SourceUpdated(object sender, DataTransferEventArgs e) {
+              Console.WriteLine("ff");
+            }*/
     }
-
-    private void ShowCurrentDebtorWindow(object sender, RoutedEventArgs e) {
-      var current = (Debtor)((Grid)((Button)sender).Parent).DataContext;
-      new CurrentDebtor(current).ShowDialog();
-      //UpdateSourceImg(current);
-      
-    }
-
-    private void AddBtnClick(object sender, RoutedEventArgs e) {
-      Debtor newDebtor = new Debtor() { Photo = "0.png" };
-      new CurrentDebtor(newDebtor).ShowDialog();
-      if (newDebtor.Name != "" && newDebtor.Sum > 0) {
-        vm.Debtors.Add(newDebtor);
-      }
-    }
-
-    private void RemoveBtnClick(object sender, RoutedEventArgs e) {
-      vm.Debtors.Remove((Debtor)((Grid)((Button)sender).Parent).DataContext);
-    }
-/*    private void UpdateSourceImg(Debtor current) {
-     // current.
-    }*/
-
-/*    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-
-    }*/
-
-/*    private void Image_SourceUpdated(object sender, DataTransferEventArgs e) {
-      Console.WriteLine("ff");
-    }*/
-  }
 }

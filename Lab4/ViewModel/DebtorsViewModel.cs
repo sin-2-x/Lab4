@@ -10,13 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab4.VeiwModel {
-  public class DebtorsViewModel : INotifyPropertyChanged//, INotifyCollectionChanged
+  public class DebtorsViewModel //: INotifyPropertyChanged//, INotifyCollectionChanged
   {
-    // Implements INotifyPropertyChanged interface to support bindings
+    
 
     private ObservableCollection<Debtor> debtors;
     DebtorsModel db;
-    public event PropertyChangedEventHandler PropertyChanged;
+    //public event PropertyChangedEventHandler PropertyChanged;
    // public event NotifyCollectionChangedEventHandler CollectionChanged;
 
     
@@ -46,10 +46,7 @@ namespace Lab4.VeiwModel {
         Console.WriteLine("удаление");
         db.Delete((Debtor)((object[])e.OldItems.SyncRoot).ElementAt(0));
       }
-      else if(e.Action==NotifyCollectionChangedAction.Replace){
-        Console.WriteLine("изменен");
-        //db.Edit();
-      }
+
       
     }
 
