@@ -35,25 +35,16 @@ namespace Lab4 {
 
     }
 
-    private void AddBtnClick(object sender, RoutedEventArgs e) {
-      Debtor newDebtor = new Debtor() { Photo = "0.png" };
+/*    private void AddBtnClick(object sender, RoutedEventArgs e) {
+      *//*Debtor newDebtor = new Debtor() { Photo = "0.png" };
       new CurrentDebtor(newDebtor).ShowDialog();
       if (newDebtor.Name != "" && newDebtor.Sum > 0) {
         vm.Debtors.Add(newDebtor);
-      }
-    }
+      }*//*
+    }*/
 
     private void RemoveBtnClick(object sender, RoutedEventArgs e) {
       vm.Debtors.Remove((Debtor)((Grid)((Button)sender).Parent).DataContext);
     }
-    
-
-    /*    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-
-        }*/
-
-    /*    private void Image_SourceUpdated(object sender, DataTransferEventArgs e) {
-          Console.WriteLine("ff");
-        }*/
   }
 }
