@@ -6,46 +6,24 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Path = System.IO.Path;
 
 namespace Lab4 {
-  /// <summary>
-  /// Логика взаимодействия для MainWindow.xaml
-  /// </summary>
-  public partial class CurrentDebtor : Window {
 
-    //Debtor ChangeDebtor;
+  public partial class CurrentDebtor : Window {
     CurretDebtorViewModel vm;
     public CurrentDebtor(Debtor CDebtor) {
-      //ChangeDebtor = CDebtor;
       vm = new CurretDebtorViewModel(CDebtor);
       DataContext = vm.CurrentDebtor;
       InitializeComponent();
-
     }
 
     private void OkButtonClick(object sender, RoutedEventArgs e) {
       int.TryParse(sumTB.Text, out int newSum);
 
-      //vm.CurrentDebtor.Sum= newSum;
-
-      //vm.CurrentDebtor.Name = nameTB.Text;
-
-
       string newPhotopath = photoImg.Source.ToString();
       newPhotopath = newPhotopath.Substring("file:///".Length);
-
-      /*string newPhotoName = newPhotopath.Substring(newPhotopath.LastIndexOf('/') + 1);
-      string oldPhotoName = vm.CurrentDebtor.Photo.Substring(vm.CurrentDebtor.Photo.LastIndexOf('\\') + 1);
-      if (newPhotoName != oldPhotoName)
-        File.Copy(newPhotopath, Directory.GetCurrentDirectory() + "\\pics\\" + newPhotoName, true);
-      //vm.CurrentDebtor.Photo = newPhotoName;
-
-      //vm.CurrentDebtor.Description = descriptionTB.Text;*/
-      vm.SubmitChanges(nameTB.Text, newSum, newPhotopath, descriptionTB.Text);
+      vm.SubmitChangesAsync(nameTB.Text, newSum, newPhotopath, descriptionTB.Text);
       Close();
-
     }
 
     private void imgMouseEnter(object sender, MouseEventArgs e) {

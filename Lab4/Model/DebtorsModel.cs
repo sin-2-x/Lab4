@@ -5,60 +5,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab4.Model
-{
-    class DebtorsModel
-    {
-        ApplicationContext dbContext;
-        private List<Debtor> repositoryData;
-
-        public DebtorsModel()
-        {
-            dbContext = new ApplicationContext();
-        }
-
-        public List<Debtor> GetData()
-        {
-
-            repositoryData = dbContext.DebtorsDatabase.ToList();
-            return repositoryData;
-        }
+namespace Lab4.Model {
+  class DebtorsModel {
+    ApplicationContext dbContext;
 
 
-        // добавление
-        public void Add(Debtor newDebtor)
-        {
-            if (newDebtor != null)
-            {
+    public DebtorsModel() {
+      dbContext = new ApplicationContext();
+    }
 
-                dbContext.DebtorsDatabase.Add(newDebtor);
-                Console.WriteLine(dbContext.SaveChanges());
-            }
-        }
+    public List<Debtor> GetData() {
 
-        // удаление
-        public void Delete(Debtor deletingDebtor)
-        {
-
-            dbContext.DebtorsDatabase.Remove(deletingDebtor);
-            dbContext.SaveChanges();
-        }
-
-        public void Edit(Debtor editingDebtor)
-        {
-            // если ни одного объекта не выделено, выходим
-            if (editingDebtor == null) return;
+      return dbContext.DebtorsDatabase.ToList(); ;
+    }
 
 
-            Debtor a = dbContext.DebtorsDatabase.Find(editingDebtor.id);
+    // добавление
+    public async Task AddAsync(Debtor newDebtor) {
+      if (newDebtor != null) {
 
-            a.Name = editingDebtor.Name;
-            a.Sum = editingDebtor.Sum;
-            a.Photo = editingDebtor.Photo;
-            a.Description = editingDebtor.Description;
-            dbContext.Entry(a).State = EntityState.Modified;
-            dbContext.SaveChanges();
-        }
+        dbContext.DebtorsDatabase.Add(newDebtor);
+        await Task.Run(() => dbContext.SaveChanges());
+      }
+    }
+
+    // удаление
+    public async Task DeleteAsync(Debtor deletingDebtor) {
+
+      dbContext.DebtorsDatabase.Remove(deletingDebtor);
+      await Task.Run(() => dbContext.SaveChanges());
+    }
+
+    public async Task EditAsync(Debtor editingDebtor) {
+      // если ни одного объекта не выделено, выходим
+      if (editingDebtor == null) return;
+
+
+      Debtor a = dbContext.DebtorsDatabase.Find(editingDebtor.id);
+
+      a.Name = editingDebtor.Name;
+      a.Sum = editingDebtor.Sum;
+      a.Photo = editingDebtor.Photo;
+      a.Description = editingDebtor.Description;
+      dbContext.Entry(a).State = EntityState.Modified;
+      await Task.Run(() => dbContext.SaveChanges());
 
     }
+
+  }
 }

@@ -34,20 +34,16 @@ namespace Lab4.VeiwModel {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }*/
 
-    void DebtorsCollectionChanged(object sender,NotifyCollectionChangedEventArgs e) {
+    async void DebtorsCollectionChangedAsync(object sender,NotifyCollectionChangedEventArgs e) {
       
       if (e.Action == NotifyCollectionChangedAction.Add) {
-        Console.WriteLine("добавление");
         var a = (Debtor)((object[])e.NewItems.SyncRoot).ElementAt(0);
         
-        db.Add(a);
+        await db.AddAsync(a);
       }
       else if (e.Action == NotifyCollectionChangedAction.Remove) {
-        Console.WriteLine("удаление");
-        db.Delete((Debtor)((object[])e.OldItems.SyncRoot).ElementAt(0));
+        await db.DeleteAsync((Debtor)((object[])e.OldItems.SyncRoot).ElementAt(0));
       }
-
-      
     }
 
     public DebtorsViewModel() {
@@ -57,7 +53,7 @@ namespace Lab4.VeiwModel {
       /*foreach (var debtor  in debtors) {
         debtor.PropertyChanged += OnPropertyChanged;
       }*/
-      debtors.CollectionChanged += DebtorsCollectionChanged;
+      debtors.CollectionChanged += DebtorsCollectionChangedAsync;
       
     }
 

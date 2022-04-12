@@ -257,6 +257,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\SubmitDeletingWindow.xaml.cs">
+      <DependentUpon>SubmitDeletingWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\CurrentDebtorView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -281,6 +284,10 @@
       <DependentUpon>DebtorsView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\SubmitDeletingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
