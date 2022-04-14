@@ -43,8 +43,8 @@ namespace Lab4 {
       }*//*
     }*/
 
-    private void RemoveBtnClick(object sender, RoutedEventArgs e) {
+/*    private void RemoveBtnClick(object sender, RoutedEventArgs e) {
       vm.Debtors.Remove((Debtor)((Grid)((Button)sender).Parent).DataContext);
-    }
+    }*/
   }
 }

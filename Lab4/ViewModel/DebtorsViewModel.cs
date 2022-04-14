@@ -1,11 +1,12 @@
-﻿using Lab4.Model;
+﻿using GalaSoft.MvvmLight.CommandWpf;
+using Lab4.Model;
 using Lab4.ViewModel;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
-
+using RelayCommand = Lab4.ViewModel.RelayCommand;
 
 namespace Lab4.VeiwModel
 {
@@ -53,6 +54,7 @@ namespace Lab4.VeiwModel
             }
         }
 
+
         private ICommand addCommand;
         public ICommand AddCommand
         {
@@ -73,6 +75,20 @@ namespace Lab4.VeiwModel
             }
         }
 
+        private ICommand deleteCommand;
+        public ICommand DeleteCommand
+        {
+            get
+            {
+
+                return deleteCommand ?? (deleteCommand = new RelayCommand/*<Debtor>*/(
+                    obj =>
+                    {
+                        Debtors.Remove((Debtor)obj);
+                    }
+                    ));
+            }
+        }
 
 
     }
