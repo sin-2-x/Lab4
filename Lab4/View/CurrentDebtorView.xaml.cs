@@ -12,19 +12,20 @@ namespace Lab4 {
   public partial class CurrentDebtor : Window {
     CurretDebtorViewModel vm;
     public CurrentDebtor(Debtor CDebtor) {
-      vm = new CurretDebtorViewModel(CDebtor);
-      DataContext = vm.CurrentDebtor;
+
+      vm = new CurretDebtorViewModel(CDebtor, this);
+      DataContext = vm;
       InitializeComponent();
     }
 
-    private void OkButtonClick(object sender, RoutedEventArgs e) {
+/*    private void OkButtonClick(object sender, RoutedEventArgs e) {
       int.TryParse(sumTB.Text, out int newSum);
 
       string newPhotopath = photoImg.Source.ToString();
       newPhotopath = newPhotopath.Substring("file:///".Length);
       vm.SubmitChangesAsync(nameTB.Text, newSum, newPhotopath, descriptionTB.Text);
       Close();
-    }
+    }*/
 
     private void imgMouseEnter(object sender, MouseEventArgs e) {
       ((Image)sender).Opacity = 0.7;
@@ -41,9 +42,16 @@ namespace Lab4 {
       op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
         "Portable Network Graphic (*.png)|*.png";
-      if (op.ShowDialog() == true)
-        photoImg.Source = new BitmapImage(new Uri(op.FileName));
+      if (op.ShowDialog() == true) {
+        //photoImg.Source = new BitmapImage(new Uri(op.FileName));
 
+        //vm.CurrentDebtor.PathToPhoto = op.FileName;
+
+        string newPhotoName = "tmp" + op.FileName.Substring(op.FileName.LastIndexOf('.'));
+        string newPhotoPath = Directory.GetCurrentDirectory() + "\\pics\\" + newPhotoName;
+        File.Copy(op.FileName, newPhotoPath, true);
+        vm.CurrentDebtorCopy.PathToPhoto = newPhotoPath;
+      }
     }
   }
 }

@@ -28,12 +28,12 @@ namespace Lab4 {
 
     }
 
-    private void ShowCurrentDebtorWindow(object sender, RoutedEventArgs e) {
-      var current = (Debtor)((Grid)((Button)sender).Parent).DataContext;
-      new CurrentDebtor(current).ShowDialog();
+/*    private void ShowCurrentDebtorWindow(object sender, RoutedEventArgs e) {
+      *//*var current = (Debtor)((Grid)((Button)sender).Parent).DataContext;
+      new CurrentDebtor(current).ShowDialog();*//*
       //vm.Debtors.ElementAt((vm.Debtors.IndexOf(current)));
 
-    }
+    }*/
 
 /*    private void AddBtnClick(object sender, RoutedEventArgs e) {
       *//*Debtor newDebtor = new Debtor() { Photo = "0.png" };

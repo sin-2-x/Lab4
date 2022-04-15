@@ -1,4 +1,5 @@
-﻿using Lab4.Model;
+﻿using GalaSoft.MvvmLight.CommandWpf;
+using Lab4.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,44 +8,54 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Lab4.VeiwModel {
   public class CurretDebtorViewModel //: INotifyPropertyChanged
   {
     ApplicationContext dbContext;
 
-    private Debtor currentDebtor;
+    private Debtor currentDebtorOriginal;
+    private Debtor currentDebtorCopy;
+    private CurrentDebtor window;
 
-    public CurretDebtorViewModel(Debtor currentDebtor) {
-      this.CurrentDebtor = currentDebtor;
-
+    public CurretDebtorViewModel(Debtor currentDebtor, CurrentDebtor window) {
+      currentDebtorOriginal = currentDebtor;
+      currentDebtorCopy = new Debtor(currentDebtor);
+      this.window = window;
       dbContext = new ApplicationContext();
     }
-    public Debtor CurrentDebtor {
+    public Debtor CurrentDebtorCopy {
       get {
-        return currentDebtor;
+        return currentDebtorCopy;
       }
       set {
-        currentDebtor = value;
+        currentDebtorCopy = value;
       }
     }
 
+    private ICommand submitChangesCommand;
+    public ICommand SubmitChangesCommand {
+      get {
 
-    /*        protected void OnPropertyChanged([CallerMemberName] string name = null)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-            }*/
+        return submitChangesCommand ?? (submitChangesCommand = new RelayCommand<Debtor>(
+            async obj => {
+              currentDebtorOriginal.Name = obj.Name;
+              currentDebtorOriginal.Sum = obj.Sum;
+              currentDebtorOriginal.Description = obj.Description;
 
-    public async void SubmitChangesAsync(string name, int sum, string photopath, string description) {
-      CurrentDebtor.Name = name;
-      CurrentDebtor.Sum = sum;
-      CurrentDebtor.Description = description;
+              if (obj.Photo.Contains("tmp")) {
+                string newPhotoName = "Debtor" + currentDebtorOriginal.id.ToString() + "-" + Guid.NewGuid().ToString() + obj.PathToPhoto.Substring(obj.PathToPhoto.LastIndexOf('.'));
+                File.Copy(obj.PathToPhoto, Directory.GetCurrentDirectory() + "\\pics\\" + newPhotoName, true);
+                currentDebtorOriginal.Photo = newPhotoName;
+              }
 
-      string newPhotoName = "Debtor" + CurrentDebtor.id.ToString() + "-" + Guid.NewGuid().ToString() + photopath.Substring(photopath.LastIndexOf('.'));
-      File.Copy(photopath, Directory.GetCurrentDirectory() + "\\pics\\" + newPhotoName, true);
-      CurrentDebtor.Photo = newPhotoName;
-      if (dbContext.DebtorsDatabase.Find(currentDebtor.id) != null) {
-        await new DebtorsModel().EditAsync(currentDebtor);
+              if (dbContext.DebtorsDatabase.Find(currentDebtorOriginal.id) != null) {
+                await new DebtorsModel().EditAsync(currentDebtorOriginal);
+              }
+              window.Close();
+            }
+            ));
       }
     }
   }

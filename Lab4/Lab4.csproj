@@ -273,6 +273,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\SubmitDeletingViewModel.cs" />
     <Compile Include="View\SubmitDeletingWindow.xaml.cs">
       <DependentUpon>SubmitDeletingWindow.xaml</DependentUpon>
     </Compile>

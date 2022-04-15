@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Lab4.ViewModel
 {
-    public class RelayCommand : ICommand
+    /*public class RelayCommand : ICommand
     {
         private Action<object> execute;
         private Func<object, bool> canExecute;
@@ -33,5 +33,5 @@ namespace Lab4.ViewModel
         {
             this.execute(parameter);
         }
-    }
+    }*/
 }

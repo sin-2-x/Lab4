@@ -3,10 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Lab4.View"
         mc:Ignorable="d"
         Title="Delete Debtor" Height="220" Width="300" MinWidth="300" MinHeight="200" WindowStartupLocation="CenterOwner" MaxWidth="300" MaxHeight="220">
-    <Grid>
-        
-    </Grid>
+  <Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+      <Label Content="Вы действительно хотите удалить должника " HorizontalAlignment="Center" VerticalAlignment="Top"/>
+      <Label Content="{Binding Debtor.Name}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Button Content="Да" Command="{Binding ButtonYes_Click}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Нет" Command="{Binding ButtonNo_Click}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+      </StackPanel>
+    </StackPanel>
+  </Grid>
 </Window>

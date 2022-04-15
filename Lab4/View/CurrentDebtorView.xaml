@@ -8,12 +8,12 @@
         >
 
   <Grid>
-    <TextBox x:Name="descriptionTB" Margin="27,154,27,26" TextWrapping="Wrap" Text="{Binding Path=Description,Mode=OneWay}" FontSize="16"/>
-    <TextBox x:Name="nameTB" Height="33" Margin="177,27,228.333,0" TextWrapping="Wrap" Text="{Binding Path=Name}" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20" MinWidth="350"/>
-    <TextBox x:Name="sumTB" HorizontalAlignment="Right" Height="33" Margin="0,27,27.333,0" TextWrapping="Wrap" Text="{Binding Path=Sum, Mode=OneWay}" VerticalAlignment="Top" Width="196" AutomationProperties.Name="sum" VerticalContentAlignment="Center" FontSize="20"/>
-    <Button Content="Применить" HorizontalAlignment="Right" Margin="0,75,27.333,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="-0.042,-0.453" Click="OkButtonClick" Height="32" FontSize="16"/>
+    <TextBox x:Name="descriptionTB" Margin="27,154,27,26" TextWrapping="Wrap" Text="{Binding Path=CurrentDebtorCopy.Description}" FontSize="16"/>
+    <TextBox x:Name="nameTB" Height="33" Margin="177,27,228.333,0" TextWrapping="Wrap" Text="{Binding Path=CurrentDebtorCopy.Name}" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20" MinWidth="350"/>
+    <TextBox x:Name="sumTB" HorizontalAlignment="Right" Height="33" Margin="0,27,27.333,0" TextWrapping="Wrap" Text="{Binding Path=CurrentDebtorCopy.Sum}" VerticalAlignment="Top" Width="196" AutomationProperties.Name="sum" VerticalContentAlignment="Center" FontSize="20"/>
+    <Button Content="Применить" HorizontalAlignment="Right" Margin="0,75,27.333,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="-0.042,-0.453" Command="{Binding SubmitChangesCommand}" CommandParameter="{Binding Mode=Default, Path = CurrentDebtorCopy}" Height="32" FontSize="16"/>
     <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="120" Margin="28,27,0,0" VerticalAlignment="Top" Width="120">
-      <Image x:Name="photoImg" Source="{Binding PathToPhoto, Mode=OneWay}" MouseEnter="imgMouseEnter" MouseLeave="imgMouseLeave" MouseDown="imgMouseClick"/>
+      <Image x:Name="photoImg" Source="{Binding CurrentDebtorCopy.PathToPhoto}" MouseEnter="imgMouseEnter" MouseLeave="imgMouseLeave" MouseDown="imgMouseClick"/>
     </Border>
 
 

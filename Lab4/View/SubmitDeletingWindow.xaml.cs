@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab4.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,10 @@ namespace Lab4.View {
   /// Логика взаимодействия для SubmitDeletingWindow.xaml
   /// </summary>
   public partial class SubmitDeletingWindow : Window {
-    public SubmitDeletingWindow() {
+    public SubmitDeletingViewModel vm;
+    public SubmitDeletingWindow(Debtor DeletingDabtor) {
+      vm = new SubmitDeletingViewModel(DeletingDabtor, this);
+      DataContext = vm;
       InitializeComponent();
     }
   }
