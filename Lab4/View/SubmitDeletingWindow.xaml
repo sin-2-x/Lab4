@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Delete Debtor" Height="220" Width="300" MinWidth="300" MinHeight="200" WindowStartupLocation="CenterOwner" MaxWidth="300" MaxHeight="220">
+        Title="Delete Debtor" Height="220" Width="300" MinWidth="300" MinHeight="200" WindowStartupLocation="CenterScreen" MaxWidth="300" MaxHeight="220" ResizeMode="NoResize">
   <Grid>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
       <Label Content="Вы действительно хотите удалить должника " HorizontalAlignment="Center" VerticalAlignment="Top"/>

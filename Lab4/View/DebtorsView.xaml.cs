@@ -14,37 +14,38 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lab4 {
-  /// <summary>
-  /// Логика взаимодействия для MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window {
-    DebtorsViewModel vm;
+namespace Lab4
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        DebtorsViewModel vm;
 
-    public MainWindow() {
-      InitializeComponent();
-      vm = new DebtorsViewModel();
-      DataContext = vm;
+        public MainWindow()
+        {
+            vm = new DebtorsViewModel();
+            InitializeComponent();
+            DataContext = vm;
+            /*if (vm.ShowGreetings) {
+                
+            }*/
 
+            this.Loaded += (o, e) =>
+            {
+                if (vm.ShowGreetings)
+                    showGreetings();
+            };
+        }
+
+        void showGreetings() {
+            var s = new View.GreetingsView() { Owner = this };
+                s.ShowDialog();
+        }
+        private void listBoxDebtors_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            vm.ListBoxSize = ((ListBox)sender).ActualWidth - 35;
+        }
     }
-
-/*    private void ShowCurrentDebtorWindow(object sender, RoutedEventArgs e) {
-      *//*var current = (Debtor)((Grid)((Button)sender).Parent).DataContext;
-      new CurrentDebtor(current).ShowDialog();*//*
-      //vm.Debtors.ElementAt((vm.Debtors.IndexOf(current)));
-
-    }*/
-
-/*    private void AddBtnClick(object sender, RoutedEventArgs e) {
-      *//*Debtor newDebtor = new Debtor() { Photo = "0.png" };
-      new CurrentDebtor(newDebtor).ShowDialog();
-      if (newDebtor.Name != "" && newDebtor.Sum > 0) {
-        vm.Debtors.Add(newDebtor);
-      }*//*
-    }*/
-
-/*    private void RemoveBtnClick(object sender, RoutedEventArgs e) {
-      vm.Debtors.Remove((Debtor)((Grid)((Button)sender).Parent).DataContext);
-    }*/
-  }
 }

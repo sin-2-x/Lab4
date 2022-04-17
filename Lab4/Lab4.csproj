@@ -272,10 +272,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\GreetingsWindowViewModel.cs" />
     <Compile Include="ViewModel\SubmitDeletingViewModel.cs" />
     <Compile Include="View\SubmitDeletingWindow.xaml.cs">
       <DependentUpon>SubmitDeletingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GreetingsView.xaml.cs">
+      <DependentUpon>GreetingsView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\CurrentDebtorView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -302,6 +305,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\SubmitDeletingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GreetingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -334,7 +341,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

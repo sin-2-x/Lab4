@@ -5,33 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab4" xmlns:veiwmodel="clr-namespace:Lab4.VeiwModel" d:DataContext="{d:DesignInstance Type=veiwmodel:DebtorsViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-  <Grid>
-    <ListBox Margin="10,31,10.6,50" x:Name="listBoxDebtors"  ItemsSource="{Binding Debtors}" >
-      <ListBox.ItemTemplate>
-        <DataTemplate>
-          <Grid Background="Azure" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-              <RowDefinition></RowDefinition>            </Grid.RowDefinitions >
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition></ColumnDefinition>
-              <ColumnDefinition></ColumnDefinition>
-              <ColumnDefinition></ColumnDefinition>
-              <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="80" Margin="0" VerticalAlignment="Top" Width="80">
-              <Image x:Name="img" Source="{Binding PathToPhoto}" Grid.Column="0" />
-            </Border>
+        x:Name="Window"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinHeight="300" MinWidth="350">
+    <Grid>
+        <ListBox Margin="10,31,10.6,50" x:Name="listBoxDebtors"  ItemsSource="{Binding Debtors}" SizeChanged="listBoxDebtors_SizeChanged"  >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="Azure" VerticalAlignment="Center" Width="{Binding DataContext.ListBoxSize , ElementName=listBoxDebtors}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>                        </Grid.RowDefinitions >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding Width, ElementName=imgBorder}"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>                        <Border x:Name="imgBorder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="80" Margin="0" VerticalAlignment="Top" Width="80" Grid.Column="0">
+                            <Image Source="{Binding PathToPhoto}"/>
+                        </Border>
 
-            <TextBlock Text="{Binding Name}" FontSize="16" Grid.Column="1"/>
-            <Button Content="Изменить" Height="40" Width="75" HorizontalAlignment="Right" Command="{Binding DataContext.ShowCurrentDebtorWindowCommand, ElementName=listBoxDebtors}" CommandParameter="{Binding Mode=OneWay}"  Grid.Column="2"/>
-            <Button Content="Удалить" Height="40" Width="75"  HorizontalAlignment="Right" Command="{Binding DataContext.DeleteCommand, ElementName=listBoxDebtors}" CommandParameter="{Binding Mode=OneWay}" Grid.Column="3" />
-          </Grid>
-        </DataTemplate>
-      </ListBox.ItemTemplate>
-    </ListBox>
-    <Button x:Name="addBtn" Content="Добавить" Margin="10,0,10,6.667" VerticalAlignment="Bottom" Height="35" Command="{Binding AddCommand}"/>
-    <Menu Height="26" Margin="0,0,-0.4,0" VerticalAlignment="Top">
-      <Button Content="Button" Width="75"/>
-    </Menu>
-  </Grid>
+                        <TextBlock Text="{Binding Name}" FontSize="16" Grid.Column="1" Margin="10,0,0,0"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                            <Button Content="Изменить" Height="40" Width="75" HorizontalAlignment="Right" Command="{Binding DataContext.ShowCurrentDebtorWindowCommand, ElementName=listBoxDebtors}" CommandParameter="{Binding Mode=OneWay}"  />
+                            <Button Content="Удалить" Height="40" Width="75"  HorizontalAlignment="Right" Command="{Binding DataContext.DeleteCommand, ElementName=listBoxDebtors}" CommandParameter="{Binding Mode=OneWay}"  />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="addBtn" Content="Добавить" Margin="10,0,10,6.667" VerticalAlignment="Bottom" Height="35" Command="{Binding AddCommand}"/>
+        <Menu Height="26" Margin="0,0,-0.4,0" VerticalAlignment="Top">
+
+            <MenuItem Header="Файл">
+                <MenuItem Header="Сохранить в .txt" Command="{Binding SaveToTxt, Mode=OneWay}" CommandParameter="{Binding Debtors}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Настройки">
+                <MenuItem Header="Показывать приветствие" Command="{Binding ChangeBoolSetting}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" IsChecked="{Binding ShowGreetings, Mode=TwoWay}" />
+            </MenuItem>
+            <MenuItem Header="О нас" Command="{Binding ShowAbout, Mode=OneWay}"></MenuItem>
+            
+        </Menu>
+    </Grid>
 </Window>

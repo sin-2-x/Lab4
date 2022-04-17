@@ -1,0 +1,12 @@
+﻿<Window x:Class="Lab4.View.GreetingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab4.View" xmlns:veiwmodel="clr-namespace:Lab4.VeiwModel" xmlns:viewmodel="clr-namespace:Lab4.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:GreetingsWindowViewModel}"
+        mc:Ignorable="d"
+        Title="Greetings" Height="150"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" >
+    <Grid x:Name="grid" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="170">
+        <Label x:Name="label" Content="{Binding Text}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>
