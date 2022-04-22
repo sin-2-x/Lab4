@@ -14,9 +14,9 @@ namespace Lab4.Model {
       dbContext = new ApplicationContext();
     }
 
-    public List<Debtor> GetData() {
+    public DbSet<Debtor> GetData() {
 
-      return dbContext.DebtorsDatabase.ToList(); ;
+      return dbContext.DebtorsDatabase;
     }
 
 
@@ -25,7 +25,7 @@ namespace Lab4.Model {
       if (newDebtor != null) {
 
         dbContext.DebtorsDatabase.Add(newDebtor);
-        await Task.Run(() => dbContext.SaveChanges());
+        await dbContext.SaveChangesAsync();
       }
     }
 

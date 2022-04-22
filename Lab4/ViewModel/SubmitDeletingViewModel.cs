@@ -56,13 +56,5 @@ namespace Lab4.ViewModel {
             ));
       }
     }
-
-    /*private void buttonYes_Click() {
-      
-    }
-
-    private void buttonNo_Click() {
-      
-    }*/
   }
 }

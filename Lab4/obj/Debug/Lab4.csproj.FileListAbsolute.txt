@@ -391,3 +391,6 @@ C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\SubmitDeletingWindow.baml
 C:\Users\sin2x\Downloads\Lab4\Lab4\obj\Debug\View\GreetingsView.g.cs
 C:\Users\sin2x\Downloads\Lab4\Lab4\obj\Debug\View\GreetingsView.baml
 C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\App.config
+C:\Users\sin2x\Desktop\Lab4\Lab4\bin\Debug\App.config
+C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\GreetingsView.g.cs
+C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\GreetingsView.baml
