@@ -361,7 +361,6 @@ C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\pt-BR\Microsoft.Data.SqlClient.reso
 C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
 C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
-C:\Users\sin2x\Downloads\Lab4\Lab4\obj\Debug\Lab4.csprojAssemblyReference.cache
 C:\Users\sin2x\Downloads\Lab4\Lab4\obj\Debug\View\SubmitDeletingWindow.g.cs
 C:\Users\sin2x\Downloads\Lab4\Lab4\obj\Debug\View\SubmitDeletingWindow.baml
 C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\CommonServiceLocator.dll
@@ -394,3 +393,4 @@ C:\Users\sin2x\Downloads\Lab4\Lab4\bin\Debug\App.config
 C:\Users\sin2x\Desktop\Lab4\Lab4\bin\Debug\App.config
 C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\GreetingsView.g.cs
 C:\Users\sin2x\Desktop\Lab4\Lab4\obj\Debug\View\GreetingsView.baml
+C:\Users\sin2x\Downloads\Lab4\Lab4\obj\Debug\Lab4.csproj.AssemblyReference.cache

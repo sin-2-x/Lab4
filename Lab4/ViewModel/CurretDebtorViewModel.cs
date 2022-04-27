@@ -35,6 +35,7 @@ namespace Lab4.VeiwModel {
       }
     }
 
+    //private Lazy<ICommand> submitChangesCommandLazy;
     private ICommand submitChangesCommand;
     public ICommand SubmitChangesCommand {
       get {
@@ -70,6 +71,7 @@ namespace Lab4.VeiwModel {
             ));
       }
     }
+
   }
 }
 
