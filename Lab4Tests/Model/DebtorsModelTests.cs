@@ -10,23 +10,34 @@ using System.Threading.Tasks;
 namespace Lab4.Model {
   [TestClass()]
   public class DebtorsModelTests {
+    static DebtorsModel db = new DebtorsModel("TestConnection");
 
-
-    static Debtor a = new Debtor(0, "n", 1, "ph", "d");
     [TestMethod()]
-    public void AddAsyncTestAsync() {
-      DebtorsModel db = new DebtorsModel("TestConnection");
-
-      var v = db.GetData().ToList();
-      db.AddAsync(a);
-      Assert.AreEqual(v, 1);
+    public async Task Test_2_DeleteAsync() {
+      var list = db.GetData().ToList();
+      for (int i = 0; i < list.Count-1; i++) {
+        await db.DeleteAsync(list.ElementAt(i));
+      }
+      Assert.AreEqual(db.GetData().ToList().Count, 1);
     }
-    //[TestMethod()]
-    /*    public async Task EditAsyncTestAsync() {
-          a.Name = "N";
-          await db.EditAsync(a);
 
-          Assert.AreEqual(db.GetData().ElementAt(0).Name, "N");
-        }*/
+    [TestMethod()]
+    public async Task Test_1_AddAsyncTestAsync() {
+
+      int countBefore = db.GetData().ToList().Count;
+      Debtor a = new Debtor(0, "n", 1, "ph", "d");
+      await db.AddAsync(a);
+      await db.AddAsync(a);
+      int countAfter = db.GetData().ToList().Count;
+      Assert.AreEqual(countBefore, countAfter-2);
+    }
+    [TestMethod()]
+    public async Task Test_3_EditAsyncTestAsync() {
+      Debtor deb = db.GetData().First();
+      deb.Name = "N";
+      await db.EditAsync(deb);
+
+      Assert.AreEqual(db.GetData().First().Name, "N");
+    }
   }
 }
