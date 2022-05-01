@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab4.Model {
-  class DebtorsModel {
+  public class DebtorsModel {
     ApplicationContext dbContext;
 
 
-    public DebtorsModel() {
-      dbContext = new ApplicationContext();
+    public DebtorsModel(string connection = "DefaultConnection") {
+      dbContext = new ApplicationContext(connection);
     }
 
     public DbSet<Debtor> GetData() {
@@ -23,7 +23,7 @@ namespace Lab4.Model {
     // добавление
     public async Task AddAsync(Debtor newDebtor) {
       if (newDebtor != null) {
-
+        
         dbContext.DebtorsDatabase.Add(newDebtor);
         await dbContext.SaveChangesAsync();
       }

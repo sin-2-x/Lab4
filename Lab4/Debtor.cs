@@ -24,6 +24,13 @@ namespace Lab4 {
       this.Photo = objToCopy.photo;
       this.Description = objToCopy.description;
     }
+    public Debtor(int id, string name, int sum, string photo, string description) {
+      this.id = id;
+      this.Name = name;
+      this.Sum = sum;
+      this.Photo = photo;
+      this.Description = description;
+    }
 
 
     //private int id;
