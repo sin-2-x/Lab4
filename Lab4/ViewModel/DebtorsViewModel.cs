@@ -1,23 +1,16 @@
 ﻿using GalaSoft.MvvmLight.CommandWpf;
 using Lab4.Model;
 using Lab4.View;
-using Lab4.ViewModel;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Configuration;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace Lab4.VeiwModel {
-  public class DebtorsViewModel : INotifyPropertyChanged//, INotifyCollectionChanged
-  {
+  public class DebtorsViewModel : INotifyPropertyChanged {
 
 
     private ObservableCollection<Debtor> debtors;
@@ -44,36 +37,18 @@ namespace Lab4.VeiwModel {
       get {
         return debtors;
       }
-      set {
-        //helloString = value;
-        //OnPropertyChanged();
-      }
     }
 
-    /*    async void DebtorsCollectionChangedAsync(object sender, NotifyCollectionChangedEventArgs e) {
-
-          if (e.Action == NotifyCollectionChangedAction.Add) {
-            var a = (Debtor)((object[])e.NewItems.SyncRoot).ElementAt(0);
-
-           // await db.AddAsync(a);
-          }
-          else if (e.Action == NotifyCollectionChangedAction.Remove) {
-            await db.DeleteAsync((Debtor)((object[])e.OldItems.SyncRoot).ElementAt(0));
-          }
-        }*/
-
-
     private ICommand addCommand;
-    //Lazy
     public ICommand AddCommand {
       get {
 
         return addCommand ?? (addCommand = new RelayCommand(
             async () => {
-              Debtor newDebtor = new Debtor() { Photo = "0.png" };
+              Debtor newDebtor = new Debtor() { Photo = "0.png", Name=string.Empty,Description =string.Empty };
               new CurrentDebtor(newDebtor).ShowDialog();
-              if (newDebtor.Name != "" && newDebtor.Sum > 0) {
-                Debtors.Add(newDebtor);
+              if (newDebtor.Name != "" && newDebtor.Sum >= 0) {
+                debtors.Add(newDebtor);
                 await db.AddAsync(newDebtor);
               }
             }
@@ -90,7 +65,7 @@ namespace Lab4.VeiwModel {
               var deleetingWindow = new SubmitDeletingWindow(obj);
               deleetingWindow.ShowDialog();
               if (deleetingWindow.vm.Change()) {
-                Debtors.Remove(obj);
+                debtors.Remove(obj);
                 await db.DeleteAsync(obj);
               }
             }

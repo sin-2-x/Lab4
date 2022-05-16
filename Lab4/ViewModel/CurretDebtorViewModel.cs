@@ -12,7 +12,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Lab4.VeiwModel {
-  public class CurretDebtorViewModel //: INotifyPropertyChanged
+  public class CurretDebtorViewModel
   {
     ApplicationContext dbContext;
 
@@ -43,7 +43,7 @@ namespace Lab4.VeiwModel {
         return submitChangesCommand ?? (submitChangesCommand = new RelayCommand<Debtor>(
             async obj => {
               try {
-                if (obj.Name.Length < 1)
+                if (obj.Name is null || obj.Name.Length < 1)
                   throw new ArgumentException("Имя является обязательным параметром");
                 currentDebtorOriginal.Name = obj.Name;
                 if (obj.Sum < 0)
